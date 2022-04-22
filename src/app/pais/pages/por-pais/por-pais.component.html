@@ -1,0 +1,27 @@
+<div class="animate__animated animate__fadeInDown">
+    <h2>Paises</h2>
+    <hr>
+
+    <div class="row">
+
+        <div class="col">
+            <app-pais-search placeholder="Buscar Pais..." (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)"></app-pais-search>
+        </div>
+    </div>
+    <ul class="list-group" *ngIf="!noSugerencia">
+        <li *ngFor="let item of sugerenciasPais" class="list-group-item list-group-item-action" (click)="buscar(item.name.common)">
+            {{item.name.common}}
+        </li>
+    </ul>
+
+    <hr>
+    <div *ngIf="error" class="alert alert-danger">
+        No se encontro nada con el termino {{termino}}
+    </div>
+
+    <div *ngIf="!error" class="row">
+        <div class="col">
+            <app-pais-tabla [respuesta]="respuesta"> </app-pais-tabla>
+        </div>
+    </div>
+</div>

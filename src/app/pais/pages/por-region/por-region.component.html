@@ -1,0 +1,20 @@
+<div class="animate__animated animate__fadeInDown">
+    <h2>Por regiones</h2>
+    <hr>
+    <div style="padding-left: 5%;">
+        <table class="table table-bordered bg-warning" style="width:30%;">
+            <thead>
+                <tr>
+
+                    <th class="list-group-item list-group-item-action" [class]="(item === regionActiva) ? 'active' : ''" *ngFor=" let item of regiones " scope="col " (click)="activarRegion(item)" style="cursor:pointer">{{item | titlecase}}</th>
+
+                </tr>
+
+            </thead>
+        </table>
+    </div>
+    <div>
+        <h1 style="text-align: center;">{{regionActiva}}</h1>
+        <app-pais-tabla [respuesta]="pais"></app-pais-tabla>
+    </div>
+</div>

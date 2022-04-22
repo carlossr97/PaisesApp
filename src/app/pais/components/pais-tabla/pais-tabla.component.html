@@ -1,0 +1,52 @@
+<div>
+    <table *ngIf="!(respuesta.length==0)" class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Bandera
+                </th>
+                <th>
+                    Nombre
+                </th>
+
+                <th>
+                    Poblacion
+                </th>
+                <th>
+                    Lenguajes
+                </th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of respuesta;let i = index">
+            <tr>
+                <td>
+                    {{i}}
+                </td>
+                <td>
+                    <img [src]="item.flags.png" style="max-width: 70px; max-height: 70px;">
+                </td>
+                <td>
+                    {{item.translations.spa.common}}
+                </td>
+
+                <td>
+                    {{item.population | number}}
+                </td>
+                <td>
+                    <ul>
+                        <li style="display: block;" *ngFor="let items of item.languages | keyvalue"> {{items.value}}</li>
+                    </ul>
+
+                </td>
+                <td>
+
+                    <a class="nav-link" [routerLink]="['/pais',item.cca3]">ver...</a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

@@ -1,0 +1,89 @@
+<div class="animate__animated animate__fadeInDown">
+    <h2 style="text-align: center;" *ngFor="let item of respuesta">
+        {{item.translations['spa'].common}}
+    </h2>
+    <hr>
+
+    <table *ngFor="let item of respuesta" class="table table-bordered" style="border-color: black;">
+
+        <tbody>
+            <tr>
+                <th scope="row">Nombre Oficial</th>
+                <td>{{item.name.official}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Capital</th>
+                <td>{{item.capital}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Bandera</th>
+                <td><img [src]="item.flags.png" style="max-width: 130px; max-height: 130px;" alt="Bandera"></td>
+
+            </tr>
+            <tr>
+                <th scope="row">Idiomas</th>
+                <td>
+                    <li style="display:flex; " *ngFor="let items of item.languages | keyvalue"> {{items.value}}</li>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Poblacion</th>
+                <td colspan="2">{{item.population | number}} De Habitantes.</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Region</th>
+                <td colspan="2">{{item.region}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">SubRegion</th>
+                <td colspan="2">{{item.subregion}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Continentes</th>
+                <td colspan="2">{{item.continents}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Zonas Horarias</th>
+                <td colspan="2">{{item.timezones}}</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Area</th>
+                <td colspan="2">{{item.area | number}} km²</td>
+
+            </tr>
+            <tr>
+                <th scope="row">Divisas</th>
+                <td>
+                    <a *ngFor="let items of item.currencies | keyvalue">
+                        <a style="display:grid;" *ngFor="let moneda of items.value| keyvalue">
+                    {{moneda.key | titlecase }}:   {{moneda.value}}
+                    </a>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Escudo de armas</th>
+                <td colspan="2"><img [src]="item.coatOfArms.png" style="max-width: 130px; max-height: 130px;" alt="Bandera de armas"></td>
+
+            </tr>
+            <tr>
+                <th scope="row">Ver En Google Maps</th>
+                <td colspan="2">
+                    <a target="_blank" href="{{item.maps.googleMaps}}">Abrir Google Maps</a>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<!-- <Pre>
+             {{respuesta | json}}
+</Pre> -->
